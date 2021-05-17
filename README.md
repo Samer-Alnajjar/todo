@@ -72,7 +72,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 UML Diagram:
-![UML](./public/lab31.png);
+![UML](./public/lab32.png);
 
 Netlify URL:
 
