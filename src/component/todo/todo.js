@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+// import axios from "axios";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -6,72 +7,66 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import TodoForm from "./form.js";
 import TodoList from "./list.js";
+import useAjax from "../hooks/axiosHook"
 
 import "./todo.scss";
 
-const ToDo = (props) => {
-  const [list, setList] = useState([]);
+const todoAPI = "https://api-js401.herokuapp.com/api/v1/todo";
 
-  const addItem = (item) => {
-    item._id = Math.random();
-    item.complete = false;
-    setList([...list, item]);
-    // this.setState({ list: [...this.state.list, item]});
-  };
+const ToDo = () => {
+  const [list, _addItem, _toggleComplete, _getTodoItems, deleteTodo] = useAjax();
+  // const [list, setList] = useState([]);
 
-  const toggleComplete = (id) => {
-    let item = list.filter((i) => i._id === id)[0] || {};
+  // const _addItem = async (item) => {
+  //   item.due = new Date();
+  //   const results = await axios.post(todoAPI, item);
+  //   setList([...list, results.data]);
+  // };
 
-    if (item._id) {
-      item.complete = !item.complete;
-      let listGenerated = list.map((listItem) =>
-        listItem._id === item._id ? item : listItem
-      );
-      setList(listGenerated);
-    }
-  };
+  // const _toggleComplete = async (id) => {
+  //   let item = list.filter((i) => i._id === id)[0] || {};
 
-  useEffect(() => {
-    let newList = [
-      {
-        _id: 1,
-        complete: false,
-        text: "Clean the Kitchen",
-        difficulty: 3,
-        assignee: "Person A",
-      },
-      {
-        _id: 2,
-        complete: false,
-        text: "Do the Laundry",
-        difficulty: 2,
-        assignee: "Person A",
-      },
-      {
-        _id: 3,
-        complete: false,
-        text: "Walk the Dog",
-        difficulty: 4,
-        assignee: "Person B",
-      },
-      {
-        _id: 4,
-        complete: true,
-        text: "Do Homework",
-        difficulty: 3,
-        assignee: "Person C",
-      },
-      {
-        _id: 5,
-        complete: false,
-        text: "Take a Nap",
-        difficulty: 1,
-        assignee: "Person B",
-      },
-    ];
+  //   if (item._id) {
+  //     item.complete = !item.complete;
+  //     let url = `${todoAPI}/${id}`;
 
-    setList(newList);
-  }, []);
+  //     const results = await axios.put(url, item);
+  //     setList(
+  //       list.map((listItem) =>
+  //         listItem._id === item._id ? results.data : listItem
+  //       )
+  //     );
+  //   }
+  // };
+
+  // const _getTodoItems = () => {
+  //   async function fetchData() {
+  //     const results = await axios.get(todoAPI);
+  //     setList([...results.data.results]);
+  //   }
+
+  //   fetchData();
+  // };
+
+
+  // const deleteTodo = async (id) => {
+  //   let item = list.find((i) => i._id === id) || {};
+
+  //   if (item._id) {
+  //     item.complete = !item.complete;
+  //     let url = `${todoAPI}/${id}`;
+
+  //     const results = await axios.delete(url);
+  //     setList(list.filter((listItem) =>
+  //       listItem._id !== results.data._id
+  //     ));    
+  //   }
+  // };
+
+
+  
+
+  useEffect(_getTodoItems, []);
 
   useEffect(() => {
     document.title =
@@ -95,12 +90,12 @@ const ToDo = (props) => {
         <Row>
           <Card style={{ width: "18rem" }}>
             <Card.Body>
-              <TodoForm handleSubmit={addItem} />
+              <TodoForm handleSubmit={_addItem} />
             </Card.Body>
           </Card>
 
           <Col sm={7} className="list-item">
-            <TodoList list={list} handleComplete={toggleComplete} />
+            <TodoList list={list} handleComplete={_toggleComplete}  handleDelete ={deleteTodo}/>
           </Col>
         </Row>
       </Container>
