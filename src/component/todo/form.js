@@ -1,24 +1,8 @@
 import React, { useState } from "react";
+import useForm from "../hooks/formHook";
 
 const TodoForm = (props) => {
-  const [item, setItem] = useState({});
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { item: {} };
-  // }
-  const handleInputChange = (e) => {
-    setItem({ ...item, [e.target.name]: e.target.value });
-    // this.setState({ item: {...this.state.item, [e.target.name]: e.target.value } });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    e.target.reset();
-    props.handleSubmit(item);
-    const items = {};
-    setItem({ items });
-  };
+  const [item, handleInputChange, handleSubmit] = useForm(props);
 
   return (
     <>
