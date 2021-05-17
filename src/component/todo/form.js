@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import useForm from "../hooks/formHook";
 
 const TodoForm = (props) => {
+  // eslint-disable-next-line no-unused-vars
   const [item, handleInputChange, handleSubmit] = useForm(props);
 
   return (

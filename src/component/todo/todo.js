@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 // import axios from "axios";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
@@ -11,12 +11,10 @@ import useAjax from "../hooks/axiosHook"
 
 import "./todo.scss";
 
-const todoAPI = "https://api-js401.herokuapp.com/api/v1/todo";
-
 const ToDo = () => {
   const [list, _addItem, _toggleComplete, _getTodoItems, deleteTodo] = useAjax();
 
-  useEffect(_getTodoItems, []);
+  useEffect(_getTodoItems, [_getTodoItems]);
 
   useEffect(() => {
     document.title =
