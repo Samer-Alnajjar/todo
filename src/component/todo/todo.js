@@ -76,10 +76,10 @@ const ToDo = (props) => {
   useEffect(() => {
     document.title =
       "To DO- complete: " +
-      list.filter((item) => !item.complete).length +
+      list.filter((item) => item.complete).length +
       "/" +
       "Incomplete: " +
-      list.filter((item) => item.complete).length;
+      list.filter((item) => !item.complete).length;
   });
 
   return (
