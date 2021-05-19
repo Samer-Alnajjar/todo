@@ -1,5 +1,7 @@
 import React from "react";
 import useForm from "../hooks/formHook";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const TodoForm = (props) => {
   // eslint-disable-next-line no-unused-vars
@@ -7,19 +9,20 @@ const TodoForm = (props) => {
 
   return (
     <>
-      <h3>Add Item</h3>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <span>To Do Item</span>
-          <input
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="formBasicEmail">
+          <h3>Add Item</h3>
+          <Form.Label>To Do Item</Form.Label>
+          <Form.Control
+            type="text"
             name="text"
             placeholder="Add To Do List Item"
             onChange={handleInputChange}
           />
-        </label>
-        <label>
-          <span>Difficulty Rating</span>
-          <input
+        </Form.Group>
+        <Form.Group controlId="formBasicRange">
+          <Form.Label>Difficulty Rating</Form.Label>
+          <Form.Control
             defaultValue="1"
             type="range"
             min="1"
@@ -27,18 +30,20 @@ const TodoForm = (props) => {
             name="difficulty"
             onChange={handleInputChange}
           />
-        </label>
-        <label>
-          <span>Assigned To</span>
-          <input
+        </Form.Group>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Assigned To</Form.Label>
+          <Form.Control
             type="text"
-            name="assignee"
+            name="assign"
             placeholder="Assigned To"
             onChange={handleInputChange}
           />
-        </label>
-        <button>Add Item</button>
-      </form>
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Add Item
+        </Button>
+      </Form>
     </>
   );
 };

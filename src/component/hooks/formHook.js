@@ -7,10 +7,10 @@ const useForm = (props) => {
 		setItem({ ...item, [e.target.name]: e.target.value });
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		e.target.reset();
-		props.handleSubmit(item);
+		await props.handleSubmit(item);
 		const items = {};
 		setItem({ items });
 	};
