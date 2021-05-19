@@ -1,8 +1,8 @@
 import React from "react";
 import ToDo from "./component/todo/todo";
 import NavBar from './component/todo/navbar';
-import PaginationProvider from "./component/context/pagination";
 import './app.css';
+import PaginationProvider from "./component/context/pagination";
 
 const App = () => {
   return (
