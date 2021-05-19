@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 // import axios from "axios";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
@@ -8,21 +8,23 @@ import Card from "react-bootstrap/Card";
 import TodoForm from "./form.js";
 import TodoList from "./list.js";
 import useAjax from "../hooks/axiosHook"
-
 import "./todo.scss";
+import {PaginationContext} from "../context/pagination";
 
 const ToDo = () => {
   const [list, _addItem, _toggleComplete, _getTodoItems, deleteTodo] = useAjax();
+
+  // const paginationContext = useContext(PaginationContext);
 
   useEffect(_getTodoItems, [_getTodoItems]);
 
   useEffect(() => {
     document.title =
-      "To DO- complete: " +
-      list.filter((item) => !item.complete).length +
+      "Complete: " +
+      list.filter((item) => item.complete).length +
       "/" +
       "Incomplete: " +
-      list.filter((item) => item.complete).length;
+      list.filter((item) => !item.complete).length;
   });
 
   return (

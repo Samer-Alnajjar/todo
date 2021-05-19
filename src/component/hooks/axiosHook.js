@@ -1,10 +1,13 @@
 import axios from "axios";
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import {PaginationContext} from "../context/pagination"
 
 const todoAPI = "https://api-js401.herokuapp.com/api/v1/todo";
 
 const useAjax = () => {
   const [list, setList] = useState([]);
+
+  // const paginationContext = useContext(PaginationContext);
 
   const _addItem = async (item) => {
     item.due = new Date();
