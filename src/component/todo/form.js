@@ -13,6 +13,7 @@ const TodoForm = (props) => {
     setItem({ ...item, [e.target.name]: e.target.value });
     // this.setState({ item: {...this.state.item, [e.target.name]: e.target.value } });
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
