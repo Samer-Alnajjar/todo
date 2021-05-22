@@ -78,4 +78,4 @@ Netlify URL:
 [Netlify](https://todo-samer.netlify.app/);
 
 PR:
-[PR](https://github.com/Samer-Alnajjar/todo/pull/2);
+[PR](https://github.com/Samer-Alnajjar/todo/pull/4);
