@@ -35,7 +35,7 @@ const TodoForm = (props) => {
           <Form.Label>Assigned To</Form.Label>
           <Form.Control
             type="text"
-            name="assign"
+            name="assignee"
             placeholder="Assigned To"
             onChange={handleInputChange}
           />

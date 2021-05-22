@@ -24,7 +24,7 @@ const TodoList = (props) => {
               </Badge>
               <strong className="mr-auto">{item.assignee}</strong>
             </Toast.Header>
-            <Toast.Body onClick={() => props.handleComplete(item._id)}>
+            <Toast.Body onClick={() => props.handleComplete(item._id, "put")}>
               {item.text}
               <div class="difficulty">difficulty : {item.difficulty}</div>
             </Toast.Body>
